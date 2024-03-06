@@ -1,0 +1,14 @@
+name: Cleanup working directory
+description: Remove all the files in working directory
+runs:
+  using: composite
+  steps:
+    - name: Cleanup working direcktory
+      shell: bash
+      run: |
+        working_directory=${{ github.workspace }}
+        if [ -z "$working_directory" ] || [ "$working_directory" = "/" ]; then
+            echo Invalid working directory \'"$working_directory"\'
+            exit 1
+        fi
+        find "$working_directory" -depth 1 | xargs rm -rfv
