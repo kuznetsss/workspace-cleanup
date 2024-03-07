@@ -11,5 +11,7 @@ The action will check that the workspace is not the root of the filesystem befor
 The action can be used in a workflow like this:
 ```yaml
 steps:
-  - uses: kuznetsss/workspace-cleanup@v1
+  - uses: kuznetsss/workspace-cleanup@1
+  - uses: actions/checkout@v4
 ```
+Of course it should be used before checkout.
